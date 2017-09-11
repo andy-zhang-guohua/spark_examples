@@ -72,10 +72,16 @@
             <version>2.4</version>
         </dependency>
         <!--http://spark.apache.org/docs/latest/rdd-programming-guide.html#linking-with-spark , apache spark v2.2.0, with scala 2.11-->
-        <dependency>
+        <!--dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>2.2.0</version>
+        </dependency-->
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.0.2</version>
         </dependency>
 
     </dependencies>
