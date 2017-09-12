@@ -10,6 +10,7 @@ import java.util.List;
 
 
 /**
+ * RDDFromJavaList 使用Java List 集合数据构造 Spark RDD 对象，并操作
  * Created by ZhangGuohua on 2017/9/11.
  */
 @Slf4j

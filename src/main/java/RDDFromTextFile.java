@@ -5,6 +5,8 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 
 /**
+ * 使用文件系统的文本文件构造 Spark RDD 对象，并操作
+ * 目前例子文件 data.txt 放在 resources 目录下面 , 在IDE idea中运行时该文件的文件系统路径为 target/classes/data.txt
  * Created by ZhangGuohua on 2017/9/12.
  */
 @Slf4j
