@@ -29,6 +29,7 @@ public class RDDFromJavaList {
         //并行集合，是通过对于驱动程序中的集合调用JavaSparkContext.parallelize 来构建的RDD
         JavaRDD<Integer> distData = sc.parallelize(data);
 
+
         JavaRDD<Integer> lineLengths = distData.map(new GetLength());
 
         // 运行reduce 这是一个动作action 这时候，spark才将计算拆分成不同的task，
@@ -38,7 +39,6 @@ public class RDDFromJavaList {
         log.info("总和" + totalLength);
         // 为了以后复用 持久化到内存...
         lineLengths.persist(StorageLevel.MEMORY_ONLY());
-
     }
 
     // 定义map函数
