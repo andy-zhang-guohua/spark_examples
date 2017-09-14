@@ -23,7 +23,7 @@ public class Pi {
 
         log.info("SparkConf : {}", sc);
 
-        final int NUM_SAMPLES = 100000000;
+        final int NUM_SAMPLES = 10000000;
         List<Integer> listIntegers = new ArrayList<>(NUM_SAMPLES);
         for (int i = 0; i < NUM_SAMPLES; i++) {
             listIntegers.add(i);
