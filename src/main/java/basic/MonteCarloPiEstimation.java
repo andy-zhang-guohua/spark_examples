@@ -39,7 +39,21 @@ import java.util.List;
  * Created by ZhangGuohua on 2017/9/14.
  */
 @Slf4j
-public class MonteCarloPi {
+public class MonteCarloPiEstimation {
+    private static void calculatePiWithoutSpark() {
+        final long COUNT_POINTS_IN_SQUARE = Long.MAX_VALUE;
+        long COUNT_POINTS_IN_CIRCLE = 0;
+        for (long i = 0; i < COUNT_POINTS_IN_SQUARE; i++) {
+            double x = Math.random();
+            double y = Math.random();
+            boolean circle = x * x + y * y < 1;
+            COUNT_POINTS_IN_CIRCLE += circle ? 1 : 0;
+        }
+
+        double pi = 4.0 * COUNT_POINTS_IN_CIRCLE / COUNT_POINTS_IN_SQUARE;
+        log.info("Pi is roughly (samples:{}){}", COUNT_POINTS_IN_SQUARE, pi);
+    }
+
     // 完成对所有数求和
     public static void main(String[] args) {
 
@@ -51,7 +65,7 @@ public class MonteCarloPi {
 
         log.info("SparkConf : {}", sc);
 
-        final int NUM_SAMPLES = 10000000;
+        final int NUM_SAMPLES = 1000000;
         List<Integer> listIntegers = new ArrayList<>(NUM_SAMPLES);
         for (int i = 0; i < NUM_SAMPLES; i++) {
             listIntegers.add(i);
@@ -64,6 +78,8 @@ public class MonteCarloPi {
         }).count();
 
         double pi = 4.0 * count / NUM_SAMPLES;
-        log.info("Pi is roughly {}", pi);
+        log.info("Pi is roughly (samples:{}) {}", NUM_SAMPLES, pi);
+
+        calculatePiWithoutSpark();
     }
 }
